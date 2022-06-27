@@ -1,5 +1,5 @@
 body { margin: 0; background: #222; color: #fafafa; font-family: 'Montserrat', sans-serif; }
-.wrapper { display: flex; align-items: center; height: 50vh; padding: 0 5px;  }
+.wrapper { display: flex; align-items: center; ; padding: 0 5px;  }
 .home { background: url('../img/home/bg.jpg'); background-size: cover; }
 
 /* slogan */
@@ -18,7 +18,7 @@ body { margin: 0; background: #222; color: #fafafa; font-family: 'Montserrat', s
 /* lightbox */
 .lightbox { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center; }
 .lightbox:before { content: ''; display: block; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: rgba(0,0,0,.7); }
-.lightbox__content { min-width: 320px; position: relative; background: #fff; color: #222; padding: 15px; border-radius: 2px; }
+.lightbox__content { min-width: 100%; position: relative; background: #fff; color: #222; padding: 15px; border-radius: 2px; }
 .lightbox__header { text-align: center; font-family: 'Bodoni 72', serif; font-weight: 100; letter-spacing: 4px; text-transform: uppercase; font-size: 26px; }
 .lightbox__footer { max-width: 100%; text-align: center; font-family: 'Bodoni 72', serif; font-weight: 100; letter-spacing: 4px; text-transform: uppercase; font-size: 16px; }
 
