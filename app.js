@@ -17,12 +17,12 @@ app.set('views', path.join(__dirname,'views'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser())
-
+const oneDay = 1000 * 60 * 60 * 24;
 app.use(session({
     secret: 'user word',
     resave: false,
     saveUninitialized: true,
-    cookie: {}
+    cookie: {maxAge: oneDay}
 }));
 app.use(flash())
 app.use('/', routes)
