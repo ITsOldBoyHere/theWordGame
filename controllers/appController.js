@@ -1,6 +1,5 @@
 const fs =require('fs');
-const { util } = require('grunt');
-const { start } = require('repl');
+
 const utils = require('../util')
 exports.store = (req, res) => {
     new_game = req.body.new_game
@@ -19,8 +18,8 @@ exports.store = (req, res) => {
                     word_status = 'know'
                 }
             }
+            word = last_know_mianownik 
             if (utils.repeat_check(word) > 0) {
-                var k = utils.repeat_check(word)
                 word_status = 'repeat'
             }
             if (utils.user_words.length>0) {
@@ -46,7 +45,8 @@ exports.store = (req, res) => {
                     break;
                 case 'false':
                     req.flash('form', last_save_char),
-                    req.flash('word', 'Nie oszukuj!')
+                    req.flash('word', 'Nie oszukuj!'),
+                    req.flash('points', 'Punkty: '+ utils.user_words.length)
                     break;
                 case 'know':
                     word = last_know_mianownik
@@ -63,70 +63,3 @@ exports.store = (req, res) => {
     }
 }
 
-
-
-/*
-exports.store = (req, res) => {
-    word = req.body.word.trim()
-    last_know_char = word[0]
-    k=0
-
-
-
-    for (var i = 1; i < dictionary_l.length; i++) {
-        
-        if (word.toUpperCase() == dictionary()[i].toUpperCase()) {
-            var k= i
-        }
-    }
-    if (k!=0) {
-        word = dictionary()[k].toUpperCase()
-        char = word[word.length-1]
-        req.flash('form', char),
-        req.flash('word', 'Ostatnie słowo: '+ word.toUpperCase())
-    }
-    else {
-        req.flash('word', 'Brak słowa w słowniku!'),
-        req.flash('form', last_know_char)
-    }
-
-
-    res.redirect('/')
-}
-*/
-/*
-slownik = fs.readFileSync('odm.txt', {encoding:'utf8', flag:'r'});
-t_slownik = slownik.split('\n')
-
-exports.store = (req, res) => {
-    word = req.body.word.trim()
-    last_know_char = word[0]
-    k=0
-    for (var i = 1; i < t_slownik.length; i++) {
-        if (word.toUpperCase() == t_slownik[i].split(",")[0].toUpperCase()) {
-            var k= i
-        }
-    }
-    if (k!=0) {
-        word = t_slownik[k].split(",")[0].toUpperCase()
-        char = word[word.length-1]
-        req.flash('form', char),
-        req.flash('word', 'Ostatnie słowo: '+ word.toUpperCase())
-    }
-    else {
-        req.flash('word', 'Brak słowa w słowniku!'),
-        req.flash('form', last_know_char)
-    }
-
-
-    res.redirect('/')
-}
-
-*/
-
-
-/*
-res.json({
-    'word': req.body.word
-})
-*/

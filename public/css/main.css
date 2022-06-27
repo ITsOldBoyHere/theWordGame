@@ -18,12 +18,12 @@ body { margin: 0; background: #222; color: #fafafa; font-family: 'Montserrat', s
 /* lightbox */
 .lightbox { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center; }
 .lightbox:before { content: ''; display: block; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: rgba(0,0,0,.7); }
-.lightbox__content { min-width: 100%; position: relative; background: #fff; color: #222; padding: 15px; border-radius: 2px; }
+.lightbox__content {text-align: center; min-width: 100%; position: relative; background: #fff; color: #222; padding: 15px; border-radius: 2px; }
 .lightbox__header { text-align: center; font-family: 'Bodoni 72', serif; font-weight: 100; letter-spacing: 4px; text-transform: uppercase; font-size: 26px; }
 .lightbox__footer { max-width: 100%; text-align: center; font-family: 'Bodoni 72', serif; font-weight: 100; letter-spacing: 4px; text-transform: uppercase; font-size: 16px; }
 
 /* lightbox form */
-.lightbox__form-control { width: 100%; margin-bottom: 35px; }
+.lightbox__form-control {text-align: center; width: 95%; margin-bottom: 35px; }
 .lightbox__label { text-transform: uppercase; width: 100%; margin-bottom: 15px; display: block; }
 .lightbox__input { transition: .2s all ease-in-out; width: 100%; border: none; border-bottom: 1px solid #ddd; padding-bottom: 5px; font-size: 16px; font-weight: 500; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
 .lightbox__input:focus { outline: none; box-shadow: none; }
@@ -31,3 +31,5 @@ body { margin: 0; background: #222; color: #fafafa; font-family: 'Montserrat', s
 .lightbox__actions--centered { text-align: center; }
 .button_off_on {color:#fff ;background: #c19656; transition: .2s all ease-in-out; text-transform: uppercase; border-radius: 25px; line-height: 40px; border: none; padding: 0 20px; cursor: pointer;  }
 .button_off_ {display: none; }
+.lightbox_off_ {display: none}
+.lightbox_off_on {display: block;}

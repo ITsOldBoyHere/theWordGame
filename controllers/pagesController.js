@@ -1,3 +1,4 @@
+
 exports.index = (req, res) => {
     res.render('index', {
         formChar: req.flash('form'),
@@ -5,6 +6,7 @@ exports.index = (req, res) => {
         formPoints: req.flash('points'),
         formButton: req.flash('button')
     })
+    
    // res.send({ formButton: 'GeeksforGeeks' })
    
 }
