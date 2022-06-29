@@ -1,3 +1,4 @@
+const session = require("express-session")
 
 exports.index = (req, res) => {
     res.render('index', {
@@ -6,7 +7,11 @@ exports.index = (req, res) => {
         formPoints: req.flash('points'),
         formButton: req.flash('button')
     })
-    
+    console.log(req.session)
+    const session=req.session;
+
+        console.log(session.user);
+
    // res.send({ formButton: 'GeeksforGeeks' })
    
 }
