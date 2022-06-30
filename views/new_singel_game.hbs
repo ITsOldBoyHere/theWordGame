@@ -17,8 +17,8 @@
 <body>
     <div class="wrapper">
         <div class=lightbox__content>
-                    <h2 class=lightbox__header>Podaj słowo</h2>
-                    <form class=lightbox__form action="/newgame" method="POST">
+                    <h2 class=lightbox__header>Hej {{ nazwaUzytkownika }},podaj słowo</h2>
+                    <form class=lightbox__form action="/nowagra" method="POST">
                         <div class=lightbox__form-control>
                             <input class=lightbox__input placeholder="" type="text" autocomplete="off" id="word" name="word" value={{ formChar }}>
                             <p class=lightbox__footer > {{formWord}} </p>
@@ -28,8 +28,8 @@
                     </form>
 
                     <div class=lightbox__actions>
-                        <form class=lightbox__form action="/newgame" method="POST">
-                            <button name="new_game" value="start" class=button_off_{{ formButton }} onclick="user_words = new Array">Zacznij nową grę</button>
+                        <form class=lightbox__form action="/nowagra" method="POST">
+                            <button name="new_game" value="start" class=button_off_{{ formButton }} onclick="">Zacznij nową grę</button>
                         </form>
                     </div>
         </div>

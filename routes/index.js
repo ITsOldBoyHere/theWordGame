@@ -6,11 +6,8 @@ const pagesController = require('../controllers/pagesController')
 const appController = require('../controllers/appController')
 
 router.get('/', pagesController.index)
-router.get('/newgame', pagesController.new_game)
+router.post('/logowanie', appController.logowanie)
+router.get('/nowagra', pagesController.nowagra)
+router.post('/nowagra', appController.gra)
 
-router.post('/', appController.start)
-router.post('/login', appController.login)
-router.post('/newgame', appController.store)
-
-//router.post('/applications', AppController.store)
 module.exports = router
