@@ -1,12 +1,16 @@
 const fs =require('fs');
-
 const utils = require('../util')
+var cookie = require('cookie');
+
 exports.store = (req, res) => {
     new_game = req.body.new_game
+
     switch (new_game) {
         case 'start':
+            console.log("strat")
             utils.user_words_cleaning()
-            res.redirect('/')
+            //res.setHeader('set-cookie', 'name=; max-age=0');
+            res.redirect('/newgame')
             break;
         case undefined:
             word = req.body.word.trim()
@@ -59,7 +63,29 @@ exports.store = (req, res) => {
             }
 
 
-            res.redirect('/')
+            res.redirect('/newgame')
     }
+    
+
+    coo = cookie.parse(req.headers.cookie || '');
+    user_name = coo.name;
+    //console.log(user_name)
 }
 
+exports.login = (req, res) => {
+    utils.user_words_cleaning()
+    user_name = req.body.name
+    console.log("login: " + user_name)
+    res.setHeader('Set-Cookie', cookie.serialize('name', user_name, {
+        httpOnly: true,
+        maxAge: 60 * 60 * 24 * 1
+      }));
+    res.redirect('/newgame')
+}
+
+exports.start = (req, res) => {
+    res.setHeader('set-cookie', 'name=; max-age=0');
+    utils.user_words_cleaning()
+    console.log('Cookies: ', req.cookies)
+    res.redirect('/')
+}

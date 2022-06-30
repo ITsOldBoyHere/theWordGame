@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700">
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/javascript">
+    function word(txt) {
+        alert (txt)
+    }
+
+    </script>
+    <title></title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class=lightbox__content>
+                    <h2 class=lightbox__header>Podaj słowo</h2>
+                    <form class=lightbox__form action="/newgame" method="POST">
+                        <div class=lightbox__form-control>
+                            <input class=lightbox__input placeholder="" type="text" autocomplete="off" id="word" name="word" value={{ formChar }}>
+                            <p class=lightbox__footer > {{formWord}} </p>
+                            <p class=lightbox__footer > {{formPoints}} </p>
+                      
+                        </div>
+                    </form>
+
+                    <div class=lightbox__actions>
+                        <form class=lightbox__form action="/newgame" method="POST">
+                            <button name="new_game" value="start" class=button_off_{{ formButton }} onclick="user_words = new Array">Zacznij nową grę</button>
+                        </form>
+                    </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

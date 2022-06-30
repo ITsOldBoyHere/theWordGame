@@ -7,8 +7,8 @@ const flash = require('connect-flash')
 const session = require('express-session')
 const routes = require('./routes/index')
 const fs_file = require('./fs')
-//const dictionary_preparing = require('./fs')
-//dictionary_preparing()
+var cookie = require('cookie')
+
 
 const app = express()
 app.set('view engine', 'hbs')
@@ -17,6 +17,9 @@ app.set('views', path.join(__dirname,'views'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser())
+
+
+
 const oneDay = 1000 * 60 * 60 * 24;
 app.use(session({
     secret: 'user word',
@@ -24,6 +27,8 @@ app.use(session({
     saveUninitialized: true,
     cookie: {maxAge: oneDay}
 }));
+
+
 app.use(flash())
 app.use('/', routes)
 app.listen(port)

@@ -1,24 +1,25 @@
 const session = require("express-session")
+var cookie = require('cookie');
+const utils = require('../util')
 
-exports.index = (req, res) => {
-    res.render('index', {
+exports.new_game = (req, res) => {
+    res.render('new_singel_game', {
         formChar: req.flash('form'),
         formWord: req.flash('word'),
         formPoints: req.flash('points'),
         formButton: req.flash('button')
     })
-    console.log(req.session)
-    const session=req.session;
 
-        console.log(session.user);
-
-   // res.send({ formButton: 'GeeksforGeeks' })
+    console.log('Cookies: ', req.cookies)
    
 }
 
 
-exports.slownik = (req, res) => {
+exports.index = (req, res) => {
+    res.render('index', {
+
+    })
 
 
-    
 }
+

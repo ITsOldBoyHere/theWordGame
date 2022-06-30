@@ -1,4 +1,6 @@
 const fs =require('fs');
+var cookie = require('cookie');
+
 slownik = fs.readFileSync('odm.txt', {encoding:'utf8', flag:'r'});
 t_slownik = slownik.split('\n')
     const  mianowniki = new Array
@@ -27,10 +29,21 @@ const repeat_check = (new_word) => {
 } 
 
 
+const write_cookie = (header, value, time) => {
+    exports.index = (req, res) => {
+    res.setHeader('Set-Cookie', cookie.serialize(hader, value, {
+    httpOnly: true,
+    maxAge: 60 * 60 * 24 * 1
+  }))
+}
+}
+
+
 module.exports = {
     mianowniki,
     add_user_word,
     user_words,
     repeat_check,
-    user_words_cleaning
+    user_words_cleaning,
+    write_cookie
 }
