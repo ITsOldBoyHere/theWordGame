@@ -1,17 +1,19 @@
 // Update with your config settings.
+require('dotenv').config()
 
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
+
  const { Client } = require('pg');
 module.exports = {
 
   development: {
     client: 'postgresql',
     connection: {
-      database: 'project_game_word',
-      user:     'postgres',
-      password: 'spica'
+      database: process.env.DB_local,
+      user:     process.env.DB_local_user,
+      password: process.env.DB_local_password
     },
     pool: {
       min: 2,
@@ -24,7 +26,7 @@ module.exports = {
   production: {
     client: 'pg',
     connection: {
-      connectionString: 'postgres://pkqqbtviwkzxei:d18d318e33676c528c3e133ec47ae5b1ca3743272d4ee7e6dea1b46f9a305abb@ec2-52-49-120-150.eu-west-1.compute.amazonaws.com:5432/db7nboll12kf7n',
+      connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
     }
 

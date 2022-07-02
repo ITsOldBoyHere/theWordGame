@@ -4,6 +4,7 @@ const utils = require('../util')
 const pagesController = require('../controllers/pagesController')
 const personControll = require('../controllers/dbControllser')
 const appController = require('../controllers/appController')
+require('dotenv').config()
 
 
 router.get('/', pagesController.index)
