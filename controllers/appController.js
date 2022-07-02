@@ -1,13 +1,8 @@
 const fs =require('fs');
 const utils = require('../util')
-//var cookie = require('cookie');
-
-
 
 exports.logowanie = (req, res) => {
-
-    req.session.nazwa_uzykownika.push(req.body.name.toUpperCase().trim());
-    console.log(req.session.nazwa_uzykownika.length)
+    req.session.nazwa_uzykownika.push(req.body.username.toUpperCase().trim());
     req.flash('nazwa_uzytkownika', req.session.nazwa_uzykownika[0])
     res.redirect('/nowagra')
 }
