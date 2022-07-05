@@ -14,10 +14,10 @@
     </script>
     <title></title>
 </head>
-<body>
+<body onload="document.getElementById('word').focus();  document.getElementById('word').setSelectionRange(2, 2); ">
     <div class="wrapper">
-        <div class=lightbox__content>
-                    <h2 class=lightbox__header>Hej {{ nazwaUzytkownika }},podaj słowo</h2>
+            <div class=lightbox__content>
+                        <h2 class=lightbox__header>Hej {{ nazwaUzytkownika }},podaj słowo</h2>
                     <form class=lightbox__form action="/nowagra" method="POST">
                         <div class=lightbox__form-control>
                             <input class=lightbox__input placeholder="" type="text" autocomplete="off" id="word" name="word" value={{ formChar }}>
@@ -34,7 +34,15 @@
                     </div>
         </div>
     </div>
+/* <div class="wrapper">
+        <div class=lightbox__content>
+            <p> Top 10:
 
+                
+            </p>
+        </div>
+    </div>
+*/
 
 
 </body>
