@@ -1,8 +1,16 @@
+Prosta gra słowna zainspirowana zabawą z dziećmi podczas podruży samochodowych.
+Polega na podawanie słowa zaczynającego się ostatnią literą poprzedniego słowa.
 
-Słownik SJP.PL - wersja: odmiany słów
+https://the-game-words.herokuapp.com/
 
-Słownik udostępniany na licencjach GPL 2, LGPL 2.1,
-Apache 2.0 oraz Creative Commons Attribution 4.0 International
+początkow napisana w czystym JS.
+Z uwagi na potrzębę odczytania słownika SJP z pliku txt zmieniłem technologię na node.JS
 
-https://sjp.pl
+Do zrobienia:
+1. Ranking graczy z wykorzystaniem bazy danych
+2. Angielska wersja strony
+3. Multiplayer
+
+
+Zapraszam do feedebacku.
 
