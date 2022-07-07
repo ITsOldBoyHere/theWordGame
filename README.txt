@@ -1,4 +1,4 @@
-Prosta gra słowna zainspirowana zabawą z dziećmi podczas podruży samochodowych.
+Prosta gra słowna zainspirowana zabawą z dziećmi podczas podróży samochodowych.
 Polega na podawanie słowa zaczynającego się ostatnią literą poprzedniego słowa.
 
 https://the-game-words.herokuapp.com/
