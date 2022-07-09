@@ -7,7 +7,7 @@ const utils = require('../util')
 exports.logowanie = (req, res) => {
 
     req.session.nazwa_uzykownika.push(req.body.name.toUpperCase().trim());
-    console.log(req.session.nazwa_uzykownika.length)
+    //console.log(req.session.nazwa_uzykownika.length)
     req.flash('nazwa_uzytkownika', req.session.nazwa_uzykownika[0])
     res.redirect('/nowagra')
 }
@@ -19,11 +19,10 @@ exports.gra = (req, res) => {
         case 'start':
             
             req.session.slowa_uzytkownika = []
-            console.log("strat")
             res.redirect('/nowagra')
             break;
         case undefined:
-            word = req.body.word.trim()
+            word = req.body.word.toUpperCase().trim()
             last_know_char = word[0]
             word_status = 'unknow' 
             for (var i = 1; i < utils.mianowniki.length; i++) {              
@@ -34,6 +33,7 @@ exports.gra = (req, res) => {
             }
             //word = last_know_mianownik 
             user_words = req.session.slowa_uzytkownika
+
             repeat = 0
             for (i=0; i<=user_words.length; i++) {
                 if (word==user_words[i]) {
