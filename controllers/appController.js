@@ -1,13 +1,20 @@
 const fs =require('fs');
 const utils = require('../util')
 
+const db = require("../db/db");
+
 exports.logowanie = (req, res) => {
     req.session.nazwa_uzykownika.push(req.body.username.toUpperCase().trim());
     req.flash('nazwa_uzytkownika', req.session.nazwa_uzykownika[0])
     res.redirect('/nowagra')
 }
 
-exports.gra = (req, res) => {
+exports.gra = async (req, res) => {
+    const gameword = await db("gameword");
+    req.flash('ranking_name_1', gameword[gameword.length-1].users_name),
+    req.flash('ranking_points_1', gameword[gameword.length-1].points),
+
+
     new_game = req.body.new_game
     req.flash('nazwa_uzytkownika', req.session.nazwa_uzykownika[0])
     switch (new_game) {
@@ -18,7 +25,7 @@ exports.gra = (req, res) => {
             res.redirect('/nowagra')
             break;
         case undefined:
-            word = req.body.word.trim()
+            word = req.body.word.toUpperCase().trim()
             last_know_char = word[0]
             word_status = 'unknow' 
             for (var i = 1; i < utils.mianowniki.length; i++) {              
@@ -69,7 +76,12 @@ exports.gra = (req, res) => {
                     char = word[word.length-1]
                     req.flash('form', char),
                     req.flash('word', 'Ostatnie słowo: '+ word.toUpperCase())
-                    user_words.push(word.toUpperCase().trim())                    
+                    user_words.push(word.toUpperCase().trim())
+                    const gameword_insert = await db("gameword").insert({
+                        users_name: req.session.nazwa_uzykownika[0].toUpperCase(),
+                        points: user_words.length
+                    })
+
                     req.flash('points', 'Punkty: '+ user_words.length)
                     
             }

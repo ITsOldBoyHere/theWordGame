@@ -9,4 +9,5 @@ class personDao {
     return id
     }
 }
+
 module.exports = new personDao()
