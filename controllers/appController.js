@@ -1,20 +1,19 @@
 const fs =require('fs');
 const utils = require('../util')
-//var cookie = require('cookie');
 
-
+const db = require("../db/db");
 
 exports.logowanie = (req, res) => {
-
-    req.session.nazwa_uzykownika.push(req.body.name.toUpperCase().trim());
-    //console.log(req.session.nazwa_uzykownika.length)
-    req.flash('nazwa_uzytkownika', req.session.nazwa_uzykownika[0])
+    req.session.nazwa_uzykownika.push(req.body.username.toUpperCase().trim());
+    req.flash('nazwa_uzytkownika', req.session.nazwa_uzykownika[0][0])
     res.redirect('/nowagra')
 }
 
-exports.gra = (req, res) => {
+exports.gra = async (req, res) => {
+    const gameword = await db(process.env.DB_table_GM);
+
     new_game = req.body.new_game
-    req.flash('nazwa_uzytkownika', req.session.nazwa_uzykownika[0])
+    req.flash('nazwa_uzytkownika', req.session.nazwa_uzykownika[0][0])
     switch (new_game) {
         case 'start':
             
@@ -74,7 +73,12 @@ exports.gra = (req, res) => {
                     char = word[word.length-1]
                     req.flash('form', char),
                     req.flash('word', 'Ostatnie słowo: '+ word.toUpperCase())
-                    user_words.push(word.toUpperCase().trim())                    
+                    user_words.push(word.toUpperCase().trim())
+                    const gameword_insert = await db(process.env.DB_table_GM).where('id', req.session.nazwa_uzykownika[0][1])
+                    .update({
+                        points: user_words.length
+                    })
+
                     req.flash('points', 'Punkty: '+ user_words.length)
                     
             }

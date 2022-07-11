@@ -14,10 +14,10 @@
     </script>
     <title></title>
 </head>
-<body onload="document.getElementById('word').focus();  document.getElementById('word').setSelectionRange(2, 2);">
+<body onload="document.getElementById('word').focus();  document.getElementById('word').setSelectionRange(2, 2); ">
     <div class="wrapper">
-        <div class=lightbox__content>
-                    <h2 class=lightbox__header>Hej {{ nazwaUzytkownika }},podaj słowo</h2>
+            <div class=lightbox__content>
+                        <h2 class=lightbox__header>Hej {{ nazwaUzytkownika }},podaj słowo</h2>
                     <form class=lightbox__form action="/nowagra" method="POST">
                         <div class=lightbox__form-control>
                             <input class=lightbox__input placeholder="" type="text" autocomplete="off" id="word" name="word" value={{ formChar }}>
@@ -32,6 +32,16 @@
                             <button name="new_game" value="start" class=button_off_{{ formButton }} onclick="">Zacznij nową grę</button>
                         </form>
                     </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class=lightbox__content>
+            <p> Top 5:</p>
+            <p>{{ ranking_name_1 }} : {{ ranking_points_1 }}</p>
+            <p>{{ ranking_name_2 }} : {{ ranking_points_2 }}</p>
+            <p>{{ ranking_name_3 }} : {{ ranking_points_3 }}</p>
+            <p>{{ ranking_name_4 }} : {{ ranking_points_4 }}</p>
+            <p>{{ ranking_name_5 }} : {{ ranking_points_5 }}</p>
         </div>
     </div>
 
