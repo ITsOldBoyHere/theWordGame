@@ -33,3 +33,4 @@ body { margin: 0; background: #222; color: #fafafa; font-family: 'Montserrat', s
 .button_off_ {display: none; }
 .lightbox_off_ {display: none}
 .lightbox_off_on {display: block;}
+.ranking__content {text-align: center; min-width: 100%; position: relative; background: rgb(0, 0, 0); color: rgb(255, 255, 255); padding: 15px; border-radius: 2px; }
