@@ -14,7 +14,7 @@ exports.index = (req, res) => {
 
 }
 exports.nowagra = async (req, res) => {
-    const gameword = await db("gameword").orderBy('points', 'desc');
+    const gameword = await db(process.env.DB_table_GM).orderBy('points', 'desc');
     //req.flash('ranking_name_1', gameword[gameword.length-1].users_name),
    // req.flash('ranking_points_1', gameword[gameword.length-1].points),
     res.render('new_singel_game', {

@@ -1,13 +1,8 @@
-// Update with your config settings.
 require('dotenv').config()
 
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
 
- const { Client } = require('pg');
+const { Client } = require('pg');
 module.exports = {
-
   development: {
     client: 'postgresql',
     connection: {
@@ -37,7 +32,7 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: 'knex_migrations_prod'
     }
 
 };

@@ -5,12 +5,12 @@ const db = require("./db/db");
 const app = express();
 
 app.use(express.json());
-
+require('dotenv').config()
 
 app.get("/", async (req, res) => {
-  const gameword = await db("gameword").orderBy('users_name');
+  const gameword = await db(process.env.DB_table_GM)
   res.json({ gameword });
-  console.log( gameword[0].users_name);
+
 });
 
 
