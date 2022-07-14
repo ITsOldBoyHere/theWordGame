@@ -23,7 +23,7 @@
                             <input class=lightbox__input placeholder="" type="text" autocomplete="off" id="word" name="word" value={{ formChar }}>
                             <p class=lightbox__footer > {{formWord}} </p>
                             <p class=lightbox__footer > {{formPoints}} </p>
-                      
+                            
                         </div>
                     </form>
 
@@ -34,18 +34,41 @@
                     </div>
         </div>
     </div>
+    <div class=timer>
+            <span class=timer name="timer" id="timer"></span>
+    </div>
     <div class="wrapper">
         <div class=ranking__content>
             <p> Top 5:</p>
-            <p>{{ ranking_name_1 }} : {{ ranking_points_1 }}</p>
-            <p>{{ ranking_name_2 }} : {{ ranking_points_2 }}</p>
-            <p>{{ ranking_name_3 }} : {{ ranking_points_3 }}</p>
-            <p>{{ ranking_name_4 }} : {{ ranking_points_4 }}</p>
-            <p>{{ ranking_name_5 }} : {{ ranking_points_5 }}</p>
+            <p>{{ ranking_name_1 }} : {{ ranking_points_1 }} (Level: {{ranking_level_1}} )</p>
+            <p>{{ ranking_name_2 }} : {{ ranking_points_2 }} (Level: {{ranking_level_2}} )</p>
+            <p>{{ ranking_name_3 }} : {{ ranking_points_3 }} (Level: {{ranking_level_3}} )</p>
+            <p>{{ ranking_name_4 }} : {{ ranking_points_4 }} (Level: {{ranking_level_4}} )</p>
+            <p>{{ ranking_name_5 }} : {{ ranking_points_5 }} (Level: {{ranking_level_5}} )</p>
         </div>
     </div>
 
 
 
+<script>
+    
+    if ({{game__timer}}) {
+        var countDownDate = new Date().getTime() + {{ game__time }};
+        var s = setInterval(function() {
+            var now = new Date().getTime();
+            var time_to_end = countDownDate - now;
+            var minutes = Math.floor((time_to_end % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((time_to_end % (1000 * 60)) / 1000);
+            document.getElementById("timer").innerHTML = "Czas: " + seconds ;
+
+        if (time_to_end < 0) {
+            clearInterval(s);
+            document.getElementById("timer").innerHTML = "";
+            window.location = "/endgame"
+        }
+        }, 1000);
+    }
+
+</script>
 </body>
 </html>

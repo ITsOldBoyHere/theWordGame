@@ -8,12 +8,12 @@ require('dotenv').config()
 
 
 router.get('/', pagesController.index)
+router.post('/', pagesController.index)
 router.post('/person', personControll.createPerson)
-//router.post('/logowanie', appController.logowanie)
 router.get('/nowagra', pagesController.nowagra)
 router.post('/nowagra', appController.gra)
+router.get('/endgame', pagesController.endgame)
 
-//router.post('/logowanie', personControll.createPerson)
-//router.post('/person', personControll.createPerson)
+
 
 module.exports = router

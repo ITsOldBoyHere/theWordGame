@@ -10,8 +10,8 @@ exports.logowanie = (req, res) => {
 }
 
 exports.gra = async (req, res) => {
+    
     const gameword = await db(process.env.DB_table_GM);
-
     new_game = req.body.new_game
     req.flash('nazwa_uzytkownika', req.session.nazwa_uzykownika[0][0])
     switch (new_game) {
@@ -55,18 +55,18 @@ exports.gra = async (req, res) => {
                 case 'unknow':
                     req.flash('word', 'Brak słowa w słowniku!'),
                     req.flash('form', last_know_char),
-                    req.flash('points', 'Punkty: '+ user_words.length)
+                    req.flash('points', 'Punkty: '+ user_words.length * req.session.nazwa_uzykownika[0][2])
                     break;
 
                 case 'repeat':
                     req.flash('form', last_know_char),
                     req.flash('word', 'Powtórzenie!'),
-                    req.flash('points', 'Punkty: '+ user_words.length)  
+                    req.flash('points', 'Punkty: '+ user_words.length * req.session.nazwa_uzykownika[0][2])  
                     break;
                 case 'false':
                     req.flash('form', last_save_char),
                     req.flash('word', 'Nie oszukuj!'),
-                    req.flash('points', 'Punkty: '+ user_words.length)
+                    req.flash('points', 'Punkty: '+ user_words.length * req.session.nazwa_uzykownika[0][2])
                     break;
                 case 'know':
                     word = last_know_mianownik
@@ -76,7 +76,8 @@ exports.gra = async (req, res) => {
                     user_words.push(word.toUpperCase().trim())
                     const gameword_insert = await db(process.env.DB_table_GM).where('id', req.session.nazwa_uzykownika[0][1])
                     .update({
-                        points: user_words.length
+                        points: user_words.length * req.session.nazwa_uzykownika[0][2],
+                        level: req.session.nazwa_uzykownika[0][2] - 1
                     })
 
                     req.flash('points', 'Punkty: '+ user_words.length)

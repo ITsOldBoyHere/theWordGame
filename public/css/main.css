@@ -29,8 +29,19 @@ body { margin: 0; background: #222; color: #fafafa; font-family: 'Montserrat', s
 .lightbox__input:focus { outline: none; box-shadow: none; }
 .lightbox__actions { text-align: center; }
 .lightbox__actions--centered { text-align: center; }
-.button_off_on {color:#fff ;background: #c19656; transition: .2s all ease-in-out; text-transform: uppercase; border-radius: 25px; line-height: 40px; border: none; padding: 0 20px; cursor: pointer;  }
+.button_off_on {font-weight: bold; color:#fff ; background: #c19656; transition: .2s all ease-in-out; text-transform: uppercase; border-radius: 25px; line-height: 40px; border: none; padding: 0 20px; cursor: pointer;  }
 .button_off_ {display: none; }
 .lightbox_off_ {display: none}
 .lightbox_off_on {display: block;}
-.ranking__content {text-align: center; min-width: 100%; position: relative; background: rgb(0, 0, 0); color: rgb(255, 255, 255); padding: 15px; border-radius: 2px; }
+.ranking__content {align-items: center; text-align: center; min-width: 100%; position: relative; background: rgb(0, 0, 0); color: rgb(255, 255, 255); padding: 15px; border-radius: 2px; }
+.radio-control {color:rgb(0, 0, 0);font-size: 12px ;background: #f7e7d0; transition: .2s all ease-in-out; text-transform: uppercase; border-radius: 25px 25px 25px 25px ; line-height: 40px; border: none; padding: 0 10px; cursor: pointer;  }
+
+.container {line-height: 40px; position: relative; padding-left: 35px; margin-bottom: 12px; cursor: pointer; font-size: 18px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;  }
+.container input { position: absolute; opacity: 0; cursor: pointer;  }
+.checkmark { position: absolute; top: 0; left: 0; height: 25px; width: 25px; background-color: #eee; border-radius: 50%;}
+.container:hover input ~ .checkmark { background-color: #ccc;}
+.container input:checked ~ .checkmark { background-color: #f7e7d0; }
+.checkmark:after { content: ""; position: absolute; display: none; }
+.container input:checked ~ .checkmark:after { display: block; }  
+.container .checkmark:after { top: 9px;left: 9px;width: 8px;height: 8px;border-radius: 50%;background: white;  }
+.timer {align-items: center; text-align: center;}
